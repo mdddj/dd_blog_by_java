@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body >
+<div th:fragment="foot">
+    <script th:src="@{/lib/bootstrap/js/jquery-3.3.1.slim.min.js}"></script>
+    <script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/lib/bootstrap/js/popper.min.js}"></script>
+    <script th:src="@{/lib/ck/ckeditor.js}"></script>
+    <script th:src="@{/lib/ck/translations/zh.js}"></script>
+    <script th:src="@{/lib/prism/prism.js}"></script>
+<!--    <script th:src="@{/lib/highlight.pack.js}"></script>-->
+<!--    <script>hljs.initHighlightingOnLoad();</script>-->
+
+    <footer class="blog-footer mt-5">
+        <p>典典博客开源地址 <a href="#">github</a> 预览 <a href="#">http://itbug.shop</a>.</p>
+        <p>
+            <a href="#">回到顶部</a>
+        </p>
+    </footer>
+</div>
+</body>
+</html>

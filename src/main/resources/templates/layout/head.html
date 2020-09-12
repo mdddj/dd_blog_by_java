@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="header(title)">
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title th:text="${title}"></title>
+        <meta content="" name="description" />
+        <meta content="" name="keywords" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta content="telephone=no" name="format-detection" />
+        <meta name="HandheldFriendly" content="true" />
+        <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/lib/bootstrap/css/bootstrap-grid.min.css}" rel="stylesheet">
+        <link th:href="@{/lib/bootstrap/css/bootstrap-reboot.min.css}" rel="stylesheet">
+        <link th:href="@{/lib/prism/prism.css}" rel="stylesheet">
+        <link th:href="@{/css/app.css}" rel="stylesheet">
+<!--        <link th:href="@{/lib/styles/github.css}" rel="stylesheet">-->
+    </head>
+</html>

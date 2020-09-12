@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/head::header('发布文章')"></head>
+<body style="background-color: white">
+<div th:replace="/layout/nav::nav('发布文章')"></div>
+
+<div>
+    <div class="container">
+        <form action="/write" method="post">
+            <div class="form-group">
+                <label for="titleId">博客标题</label>
+                <input type="text" name="title" class="form-control" id="titleId" aria-describedby="emailHelp"
+                       placeholder="输入文章标题">
+                <small id="emailHelp" class="form-text text-muted">建议1-30字内</small>
+            </div>
+            <div class="form-group">
+                <label for="editor">博客正文</label>
+                <div id="editor" class="col-xs-12">
+                    <h2>博客正文样本</h2>
+                    <p>
+                        这篇博客文章展示了Bootstrap支持和样式的几种不同类型的内容。支持基本的排版、图像和代码。
+                    </p>
+                    <hr>
+                    <p>
+                        与母亲一起生孩子，这是一种荒谬的行为。我也一样。孢子囊状花萼和前庭静脉的lacinia。我们在肺叶上献祭。神圣之日是发酵之日
+                    </p>
+                    <p>这是我的最爱. <strong>谁都不知道</strong> 或者欧盟的狮子座。如果我不在，我就不在我的车里.</p>
+                    <p>Etiam门 <em>麦格纳</em> 神圣之日是发酵之日。无奉献的裂卵海螺.</p>
+                    <h2>标题</h2>
+                    <p>箭矢炎会使你的身体虚弱，也会使你的身体虚弱。我不知道你的名字，我也不知道你的名字。莫比里奥里修斯，圣门，爱洛斯前厅.</p>
+                    <h3>副标题</h3>
+                    <p>当立即拉射线超级碗山。Ajax Tab饮料尚不可用。即使是malesuada门沙拉也具有柔软的性能。Fusce dapibus，Tellus ac cursus commodo，tortor
+                        mauris condimentum nibh，ut fermentum justo amet risus。</p>
+
+                </div>
+            </div>
+            <input th:name="${_csrf.getParameterName()}" th:value="${_csrf.getToken()}" type="hidden">
+            <input th:name="content" type="hidden">
+
+            <div class="form-group">
+                <label for="titleId">选择博客位置: </label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="location" id="inlineRadio1" value="3" checked>
+                    <label class="form-check-label" for="inlineRadio1">普通列表中</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="location" id="inlineRadio2" value="1">
+                    <label class="form-check-label" for="inlineRadio2">置顶轮播图中</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="location" id="inlineRadio3" value="2">
+                    <label class="form-check-label" for="inlineRadio3">置顶卡片中 (只能放两个)</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">发布文章</button>
+        </form>
+    </div>
+</div>
+
+
+<div th:replace="/layout/foot::foot"></div>
+<script type="application/javascript">
+    ClassicEditor.create(document.querySelector('#editor'), {
+
+        toolbar: {
+            items: [
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'link',
+                'bulletedList',
+                'numberedList',
+                '|',
+                'indent',
+                'outdent',
+                '|',
+                'imageUpload',
+                'blockQuote',
+                'insertTable',
+                'mediaEmbed',
+                'undo',
+                'redo',
+                'code',
+                'codeBlock',
+                'fontBackgroundColor',
+                'exportPdf',
+                'exportWord',
+                'fontColor',
+                'fontSize',
+                'fontFamily',
+                'highlight',
+                'horizontalLine',
+                'removeFormat',
+                'subscript',
+                'superscript',
+                'strikethrough',
+                'todoList',
+                'underline'
+            ]
+        },
+        language: 'zh-cn',
+        image: {
+            toolbar: [
+                'imageTextAlternative',
+                'imageStyle:full',
+                'imageStyle:side'
+            ]
+        },
+        table: {
+            contentToolbar: [
+                'tableColumn',
+                'tableRow',
+                'mergeTableCells',
+                'tableCellProperties',
+                'tableProperties'
+            ]
+        },
+        licenseKey: '',
+        ckfinder: {
+            uploadUrl: '/ckeditor/upload/image'
+        }
+
+    })
+        .then(editor => {
+            window.editor = editor;
+            var html = window.editor.getData();
+            $("input[name='content']").val(html);
+            editor.model.document.on('change:data', () => {
+                html = window.editor.getData();
+                if (html == "") {
+                    html = "<p></p>";
+                }
+                $("input[name='content']").val(html);
+
+                //图片上传
+                const doc = editor.model.document;
+                const changes = doc.differ.getChanges();
+
+                for (const entry of changes) {
+                    if (entry.type === 'insert' && entry.name === 'image') {
+                        const item = entry.position.nodeAfter;
+
+                        // Check if the image element still has upload id.
+                        const uploadId = item.getAttribute('uploadId');
+                        const uploadStatus = item.getAttribute('uploadStatus');
+
+                        if (!uploadId && !uploadStatus) {
+                            CatchRemoteImage(editor, item);
+                        }
+                    }
+                }
+            });
+
+        })
+        .catch(error => {
+            console.error('There was a problem initializing the editor.', error);
+        });
+
+</script>
+</body>
+</html>

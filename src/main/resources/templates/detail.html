@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/head::header('典典博客')"></head>
+<body style="background-color: white">
+<div th:replace="/layout/nav::nav('博客详情')"></div>
+<main class="l-main-content_page-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="posts-group">
+                    <article class="b-post b-post-full clearfix">
+                        <div class="entry-meta">
+                            <div class="entry-date"><span class="entry-date__number">25</span><span
+                                    class="entry-date__month">feb</span>
+                            </div>
+                            <div class="ui-decor"></div>
+                            <span class="entry-meta__item">Author:&nbsp;<a class="entry-meta__link"
+                                                                           href="blog-main.html">Alex</a></span><span
+                                class="entry-meta__item">Comments:&nbsp;<a class="entry-meta__link"
+                                                                           href="blog-main.html">53</a></span>
+                        </div>
+                        <div class="entry-main">
+                            <div class="entry-media">
+                            </div>
+                            <div class="entry-header">
+                                <h1 class="entry-title ui-title-block ui-title-block_sm ui-title-block ui-title-block_border" th:text="${blog.title}">
+                                    </h1>
+                            </div>
+                            <div class="entry-content" th:utext="${blog.getContent()}">
+                            </div>
+                        </div>
+                        <div class="entry-footer">
+                            <div class="entry-footer__group">
+                                <div class="entry-footer__title">tags:</div>
+                                <a class="entry-footer__link" href="blog-post.html">creative,</a><a
+                                    class="entry-footer__link" href="blog-post.html">studio,</a><a
+                                    class="entry-footer__link" href="blog-post.html">minimal,</a><a
+                                    class="entry-footer__link" href="blog-post.html">clean</a>
+                            </div>
+                            <div class="entry-footer__group">
+                                <div class="entry-footer__title">Share</div>
+                                <a class="entry-footer__link entry-footer__link_social" href="home.html">facebook</a><a
+                                    class="entry-footer__link entry-footer__link_social" href="home.html">twitter</a><a
+                                    class="entry-footer__link entry-footer__link_social"
+                                    href="home.html">pinterest</a><a
+                                    class="entry-footer__link entry-footer__link_social" href="home.html">behance</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- end .post-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="/layout/foot::foot">
+
+    </div>
+</main>
+</body>
+</html>
