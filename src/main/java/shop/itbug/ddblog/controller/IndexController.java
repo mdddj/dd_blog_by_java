@@ -21,7 +21,7 @@ public class IndexController {
         Page<Blog> blogs = blogService.find(page == null ? 0 : page);
 
         // 获取置顶的博客(大)
-        Page<Blog> top = blogService.findTop(1, 0, 5);
+        Page<Blog> top = blogService.findTop(1, 0, 2);
         model.addAttribute("top",top.getContent());
 
         //卡片置顶的博客
