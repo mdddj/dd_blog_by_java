@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/index", "/", "/upload/**", "/download/**", "/api/**", "/websocket/**", "/detail/**").permitAll()
+        http.authorizeRequests().antMatchers( "/", "/upload/**", "/detail/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
                 .permitAll().and().logout().logoutSuccessUrl("/login").logoutUrl("/logout");
-        http.csrf().ignoringAntMatchers("/api/**","/ckeditor/**");
+        http.csrf().ignoringAntMatchers("/api/**","/ckeditor/**");//"/ckeditor/**"
     }
 
     @Override

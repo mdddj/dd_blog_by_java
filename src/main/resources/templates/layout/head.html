@@ -9,6 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta content="telephone=no" name="format-detection" />
         <meta name="HandheldFriendly" content="true" />
+        <meta name="_csrf" th:content="${_csrf.token}"/>
+        <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
         <link th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
         <link th:href="@{/lib/bootstrap/css/bootstrap-grid.min.css}" rel="stylesheet">
         <link th:href="@{/lib/bootstrap/css/bootstrap-reboot.min.css}" rel="stylesheet">

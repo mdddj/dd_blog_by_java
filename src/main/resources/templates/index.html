@@ -6,23 +6,6 @@
 
 
 <div class="container">
-    <!--置顶轮播-->
-    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark" th:if="${#lists.size(top)!=0}">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div th:class="${state.index==0 ? 'carousel-item active':'carousel-item'}"
-                     th:each="blog, state: ${top}">
-                    <div class="col-md-6 px-0">
-                        <h1 class="display-4 font-italic" th:text="${blog.title}"></h1>
-                        <p class="lead my-3" th:text="${blog.sortContent}"></p>
-                        <p class="lead mb-0"><a th:href="|/detail/${blog.id}|"
-                                                class="text-white font-weight-bold">继续阅读</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--置顶轮播end-->
 
     <!--    博客列表-->
 

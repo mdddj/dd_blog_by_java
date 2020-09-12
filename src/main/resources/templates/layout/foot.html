@@ -6,7 +6,7 @@
 </head>
 <body >
 <div th:fragment="foot">
-    <script th:src="@{/lib/bootstrap/js/jquery-3.3.1.slim.min.js}"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
     <script th:src="@{/lib/bootstrap/js/popper.min.js}"></script>
     <script th:src="@{/lib/ck/ckeditor.js}"></script>
@@ -21,6 +21,16 @@
             <a href="#">回到顶部</a>
         </p>
     </footer>
+    <script type="application/javascript">
+       $(function(){
+           var token = $("meta[name='_csrf']").attr("content");
+           var header = $("meta[name='_csrf_header']").attr("content");
+           $(document).ajaxSend(function(e, xhr, options) {
+               xhr.setRequestHeader(header, token);
+           });
+       });
+    </script>
+
 </div>
 </body>
 </html>
