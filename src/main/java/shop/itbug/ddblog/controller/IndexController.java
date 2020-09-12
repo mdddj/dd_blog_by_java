@@ -24,6 +24,9 @@ public class IndexController {
         Page<Blog> top = blogService.findTop(1, 0, 5);
         model.addAttribute("top",top.getContent());
 
+        //卡片置顶的博客
+
+
         model.addAttribute("data",blogs);
         model.addAttribute("list",blogs.getContent());
         return "index";

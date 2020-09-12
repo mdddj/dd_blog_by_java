@@ -16,22 +16,26 @@
             <div class="form-group">
                 <label for="editor">博客正文</label>
                 <div id="editor" class="col-xs-12">
-                    <h2>博客正文样本</h2>
-                    <p>
-                        这篇博客文章展示了Bootstrap支持和样式的几种不同类型的内容。支持基本的排版、图像和代码。
-                    </p>
-                    <hr>
-                    <p>
-                        与母亲一起生孩子，这是一种荒谬的行为。我也一样。孢子囊状花萼和前庭静脉的lacinia。我们在肺叶上献祭。神圣之日是发酵之日
-                    </p>
-                    <p>这是我的最爱. <strong>谁都不知道</strong> 或者欧盟的狮子座。如果我不在，我就不在我的车里.</p>
-                    <p>Etiam门 <em>麦格纳</em> 神圣之日是发酵之日。无奉献的裂卵海螺.</p>
-                    <h2>标题</h2>
-                    <p>箭矢炎会使你的身体虚弱，也会使你的身体虚弱。我不知道你的名字，我也不知道你的名字。莫比里奥里修斯，圣门，爱洛斯前厅.</p>
-                    <h3>副标题</h3>
-                    <p>当立即拉射线超级碗山。Ajax Tab饮料尚不可用。即使是malesuada门沙拉也具有柔软的性能。Fusce dapibus，Tellus ac cursus commodo，tortor
-                        mauris condimentum nibh，ut fermentum justo amet risus。</p>
 
+                    <h2>前言</h2>
+                    <p>提示：这里可以添加本文要记录的大概内容：
+                        例如：随着人工智能的不断发展，机器学习这门技术也越来越重要，很多人都开启了学习机器学习，本文就介绍了机器学习的基础内容。</p>
+                    <hr />
+                    <p>提示：以下是本篇文章正文内容，下面案例可供参考</p>
+                    <h1>一、pandas是什么？</h1>
+                    <p>示例：pandas 是基于NumPy 的一种工具，该工具是为了解决数据分析任务而创建的。</p>
+                    <h1>二、使用步骤</h1>
+                    <h3>1.引入库</h3>
+                    <p>代码如下（示例）：</p>
+                    <pre data-language="Plain text" spellcheck="false">import numpy as np import pandas as pd import matplotlib.pyplot as plt import seaborn as sns import warnings warnings.filterwarnings('ignore') import ssl ssl._create_default_https_context = ssl._create_unverified_context </pre>
+                    <h3>2.读入数据</h3>
+                    <p>代码如下（示例）：</p>
+                    <pre data-language="Plain text" spellcheck="false">data = pd.read_csv( 'https://labfile.oss.aliyuncs.com/courses/1283/adult.data.csv') print(data.head()) </pre>
+                    <p>该处使用的url网络请求的数据。</p>
+                    <hr />
+                    <h1>总结</h1>
+                    <p>提示：这里对文章进行总结：
+                        例如：以上就是今天要讲的内容，本文仅仅简单介绍了pandas的使用，而pandas提供了大量能使我们快速便捷地处理数据的函数和方法</p>
                 </div>
             </div>
             <input th:name="${_csrf.getParameterName()}" th:value="${_csrf.getToken()}" type="hidden">
@@ -114,6 +118,25 @@
                 'mergeTableCells',
                 'tableCellProperties',
                 'tableProperties'
+            ]
+        },
+        codeBlock :{
+            languages:[
+                { language: 'plaintext', label: 'Plain text' }, // The default language.
+                { language: 'c', label: 'C' },
+                { language: 'cs', label: 'C#' },
+                { language: 'cpp', label: 'C++' },
+                { language: 'css', label: 'CSS' },
+                { language: 'diff', label: 'Diff' },
+                { language: 'html', label: 'HTML' },
+                { language: 'java', label: 'Java' },
+                { language: 'javascript', label: 'JavaScript' },
+                { language: 'php', label: 'PHP' },
+                { language: 'python', label: 'Python' },
+                { language: 'ruby', label: 'Ruby' },
+                { language: 'typescript', label: 'TypeScript' },
+                { language: 'xml', label: 'XML' },
+                { language: 'dart', label: 'Dart' }
             ]
         },
         licenseKey: '',
