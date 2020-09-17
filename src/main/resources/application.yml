@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ddblog?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    type: com.zaxxer.hikari.HikariDataSource
+
+  jpa:
+    database: mysql
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  thymeleaf:
+    #    mode: LEGACYHTML5
+    cache: false
+    suffix: .html
+    prefix: classpath:/templates/
+    mode: LEGACYHTML5
+
+  security:
+    user:
+      name: admin
+      password: 12345678
+      roles: admin
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      file-size-threshold: 1MB
+      max-request-size: 200MB
+  devtools:
+    restart:
+      log-condition-evaluation-delta: true
+    livereload:
+      port: 38729
+server:
+  port: 8082
+
+file:
+  upload-folder: /usr/erp_file_system/apks/
+  static-access-path: /file/apks/**
+
+site:
+  logo: https://static.saintic.com/picbed/huang/2020/09/02/1599028146084.gif
+
+os_win:
+  upload-folder: C:/upload/images/
+  server-path: /file/image/**
+  url: /file/image/

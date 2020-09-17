@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/layout/head::header('典典博客')"></head>
+<body style="background-color: white">
+<div th:replace="/layout/nav::nav('博客详情')"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class=" ">
+                    <strong class="d-inline-block mb-2 text-primary">default</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" th:href="|/detail/${blog.id}|" th:text="${blog.title}"></a>
+                    </h3>
+                    <div class="mb-1 text-muted"><span
+                            th:text="${#dates.format(blog.createTime,'yyyy-MM-dd HH:mm')}"></span>&nbsp;<a href="#"
+                                                                                                           th:text="${blog.author}"></a>
+                        <div class="btn-group float-right" sec:authorize="isAuthenticated()">
+                            <a type="button" class="btn btn-secondary" th:href="'/write?update='+${blog.id}">编辑</a>
+                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                <a class="dropdown-item" href="#">修改分类</a>
+                                <a class="dropdown-item" href="#">设置标签</a>
+                                <div class="dropdown-divider"></div>
+                                <button class="dropdown-item" id="bBlogDetele" >删除本博客</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-text mb-auto text-break max-line-2" th:utext="${blog.content}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    var curr_blog_id = [[${blog.id}]];
+</script>
+<div th:replace="/layout/foot::foot"></div>
+</main>
+</body>
+</html>
